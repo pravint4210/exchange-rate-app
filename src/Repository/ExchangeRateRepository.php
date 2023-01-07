@@ -38,4 +38,17 @@ class ExchangeRateRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    
+    public function getAvailableCurrencies(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        
+        $sql = "select id, currency from available_currencies";
+        $stmt = $conn->prepare($sql);
+        $resultset = $stmt->executeQuery();
+        
+        $available_currencies = $resultset->fetchAllAssociative();
+        
+        return $available_currencies;
+    }
 }
