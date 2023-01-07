@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Exchange Rates!{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('css/app.css') }}" rel="stylesheet"/>
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="{{ asset('js/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/app.js') }}"></script>
+        {% endblock %}
+    </head>
+    <body class="er-body-container">
+        {% block body %}
+            <header class="er-header">
+                <h2>Exchange Rates</h2>
+            </header>
+            <main>
+                <div class="er-main-container">
+                    <div class="currency-dropdowns-container">
+                        <label>From Currency</label>
+                        <select class="form-item base-currency currency-dropdown">
+                            {% for curr in availableCurrencies %}
+                                <option value="{{ curr.currency }}">{{ curr.currency }}</option>
+                            {% endfor %}
+                        </select>
+                        <label>To Currency</label>
+                        <select class="form-item target-currency currency-dropdown">
+                            {% for er_curr in availableCurrencies %}
+                                <option value="{{ er_curr.currency }}" {% if er_curr.currency == "EUR" %} selected="selected" {% endif %}>{{ er_curr.currency }}</option>
+                            {% endfor %}
+                        </select>
+                        <label>Amount</label>
+                        <input type="text" class="form-item er-amount" value="1"/>
+                        <button class="form-item get-latest-rates">
+                            Get Exchange Rates
+                        </button>
+                    </div>
+                    
+                    <div class="rates-table-container"></div>
+                </div>
+            </main>        
+        {% endblock %}
+    </body>
+</html>
