@@ -5,3 +5,8 @@ home:
 homePage:
     path: /home
     controller: App\Controller\HomeController::home
+
+saveRates:
+    path: /fetch-rates
+    controller: App\Controller\ExchangeRateController::fetchRates
+
