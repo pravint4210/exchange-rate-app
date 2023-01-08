@@ -13,40 +13,76 @@ and open the template in the editor.
 }
 .er-body-container{
     font-family: "verdana";
+    background: #f7f8fb;
 }
-.er-main-container{
+.er-body-container .er-main-container{
     margin: 0px auto;
-    width: 80%;
+    width: 86%;
     text-align: center;
+    background: #fff;
+    padding: 20px 0px;
 }
-.er-header{
+.er-body-container .er-header{
     height: 100px;
     text-align: center;
+    background: #fff;
+    box-shadow: 0px 0px 8px 0px #000;
+    -webkit-box-shadow: 0px 0px 8px 0px #000;
+    -moz-box-shadow: 0px 0px 8px 0px #000;
+    -o-box-shadow: 0px 0px 8px 0px #000;
+    -ms-box-shadow: 0px 0px 8px 0px #000;
+    margin-bottom: 30px;
 }
-.er-header h2{
+.er-body-container .er-header h2{
     padding: 30px 0px;
 }
-.currency-dropdowns-container{
-    margin-bottom: 20px;
+.er-body-container .currency-dropdowns-container{
+    margin-bottom: 40px;
+    font-size: 14px;
+    position: relative;
 }
-.currency-dropdowns-container .form-item{
+.er-body-container .currency-dropdowns-container .form-item{
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     -o-appearance: none;
     -ms-appearance: none;
     background: none;
-    border: 1px solid #000000;
+    border: 1px solid #d4dae3;
     border-radius: 4px;
     padding: 10px 4px;
 }
-.currency-dropdowns-container .currency-dropdown{
+.er-body-container .currency-dropdowns-container .currency-dropdown{
     width: 120px;
 }
-.currency-dropdowns-container .er-amount{
+.er-body-container .currency-dropdowns-container .er-amount{
     width: 90px;
     margin-right: 20px;
 }
-.currency-dropdowns-container button{
+.er-body-container .currency-dropdowns-container button{
     cursor: pointer;
+    background: #3672e0 !important;
+    color: #fff;
+    border-color: #3672e0 !important;
+}
+.er-body-container .er-rate-table{
+    width: 86%;
+    margin: 0px auto;
+    font-size: 14px;
+    border-collapse: collapse;
+}
+.er-body-container .er-rate-table th{
+    padding: 5px 0px;
+}
+.er-body-container .er-rate-table td{
+    padding: 10px 0px;
+}
+.er-body-container .er-rate-table tr{
+    border-bottom: 1px solid #d4dae3;
+}
+.er-body-container .er-rate-table tr:nth-child(even) {
+    background-color: #f5f6f9;
+}
+.er-body-container .er-rate-table .header-row{
+    border-width: 2px;
 }
