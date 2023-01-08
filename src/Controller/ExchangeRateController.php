@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use App\Entity\ExchangeRate;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Repository\ExchangeRateRepository;
 
 class ExchangeRateController extends AbstractController{
     private $client;
@@ -21,11 +22,18 @@ class ExchangeRateController extends AbstractController{
         $this->doctrine = $doctrine;
     }
     
-    public function fetchRates(Request $request): Response{
+    public function fetchRates(Request $request, ExchangeRateRepository $repo): Response{
         $post_values = $request->request->all();
         $statusCode = $this->saveRates($post_values);
+        $exchangeRatesData = $repo->getExchangeRateData();
+        
+        foreach($exchangeRatesData as &$data){
+            $data['created_at'] = date("d M, Y g:i a", strtotime($data['created_at']));
+        }
+        
         return $this->render('rates/rates.html.twig', [
             'satusCode' => $statusCode,
+            'exchangeRatesData' => $exchangeRatesData
         ]);
     }
     

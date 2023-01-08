@@ -9,4 +9,8 @@ homePage:
 saveRates:
     path: /fetch-rates
     controller: App\Controller\ExchangeRateController::fetchRates
+    
+getData:
+    path: /get-data
+    controller: App\Controller\HomeController::getData
 

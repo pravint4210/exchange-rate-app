@@ -1,0 +1,21 @@
+{# empty Twig template #}
+{%  if satusCode != 200 %}
+    <h4>Something wrong.. Please try again later....</h4>
+{% else %}
+    <table class="er-rate-table">
+        <tr class="header-row">
+            <th>FROM</th>
+            <th>TO</th>
+            <th>CONVERSION RATE</th>
+            <th>DATE</th>
+        </tr>
+        {% for data in exchangeRatesData %}
+            <tr>
+                <td>{{ data.amount~data.base_currency }}</td>
+                <td>{{ data.conversion_result~data.target_currency }}</td>
+                <td>{{ data.conversion_rate }}</td>
+                <td>{{ data.created_at }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endif %}

@@ -20,13 +20,13 @@
             <main>
                 <div class="er-main-container">
                     <div class="currency-dropdowns-container">
-                        <label>From Currency</label>
+                        <label>Select From Currency</label>
                         <select class="form-item base-currency currency-dropdown">
                             {% for curr in availableCurrencies %}
                                 <option value="{{ curr.currency }}">{{ curr.currency }}</option>
                             {% endfor %}
                         </select>
-                        <label>To Currency</label>
+                        <label>Select To Currency</label>
                         <select class="form-item target-currency currency-dropdown">
                             {% for er_curr in availableCurrencies %}
                                 <option value="{{ er_curr.currency }}" {% if er_curr.currency == "EUR" %} selected="selected" {% endif %}>{{ er_curr.currency }}</option>
@@ -39,7 +39,7 @@
                         </button>
                     </div>
                     
-                    <div class="rates-table-container"></div>
+                    <div class="rates-table-container">Loading.........</div>
                 </div>
             </main>        
         {% endblock %}

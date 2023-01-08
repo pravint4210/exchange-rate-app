@@ -16,4 +16,15 @@ class HomeController extends AbstractController{
             'availableCurrencies' => $available_currencies,
         ]);
     }
+    
+    public function getData(ExchangeRateRepository $repo){
+        $exchangeRatesData = $repo->getExchangeRateData();
+        foreach($exchangeRatesData as &$data){
+            $data['created_at'] = date("d M, Y g:i a", strtotime($data['created_at']));
+        }
+        return $this->render('rates/rates.html.twig', [
+            'satusCode' => 200,
+            'exchangeRatesData' => $exchangeRatesData
+        ]);
+    }
 }

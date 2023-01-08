@@ -51,4 +51,18 @@ class ExchangeRateRepository extends ServiceEntityRepository
         
         return $available_currencies;
     }
+    
+    public function getExchangeRateData(): array
+    {
+        $conn = $this->getEntityManager()->getConnection();
+        
+        $sql = "select id, base_currency, target_currency, amount, created_at, TRUNCATE(conversion_rate, 2) AS conversion_rate, "
+                . "TRUNCATE(conversion_result, 2) AS conversion_result from exchange_rate";
+        $stmt = $conn->prepare($sql);
+        $resultset = $stmt->executeQuery();
+        
+        $exchange_rate_data = $resultset->fetchAllAssociative();
+        
+        return $exchange_rate_data;
+    }
 }
